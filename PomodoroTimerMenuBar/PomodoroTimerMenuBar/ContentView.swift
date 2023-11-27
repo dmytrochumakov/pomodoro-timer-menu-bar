@@ -7,18 +7,23 @@
 
 import SwiftUI
 import Combine
+import AudioToolbox
 
-enum TimerType {
+enum TimerType: Equatable {
 
     case work
-    case relax
+    case relax(_ numberOfFinishedPomodories: Int)
 
     var timeRemaining: Int {
         switch self {
         case .work:
             1500
-        case .relax:
-            300
+        case let .relax(numberOfFinishedPomodories):
+            if numberOfFinishedPomodories.isMultiple(of: 4) {
+                900
+            } else  {
+                300
+            }
         }
     }
 
@@ -57,7 +62,7 @@ struct ContentView: View {
                 instantiateTimer(.work)
             }
             Button("relax") {
-                instantiateTimer(.relax)
+                instantiateTimer(.relax(numberOfFinishedPomodories))
             }
         }
         .padding(16)
