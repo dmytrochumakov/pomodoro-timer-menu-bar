@@ -53,6 +53,7 @@ struct ContentView: View {
                         if timerType == .work {
                             numberOfFinishedPomodories += 1
                         }
+                        AudioServicesPlaySystemSound(1005)
                         cancelTimer()
                         onShow()
                     }
