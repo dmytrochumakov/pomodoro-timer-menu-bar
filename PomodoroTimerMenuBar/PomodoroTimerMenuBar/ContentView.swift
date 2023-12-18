@@ -59,6 +59,9 @@ struct ContentView: View {
                     }
                 }
             Text("Pomodories: \(numberOfFinishedPomodories)")
+            Button("reset pomodories") {
+                resetPomodories()
+            }
             Button("work") {
                 instantiateTimer(.work)
             }
@@ -83,6 +86,10 @@ private extension ContentView {
 
     func cancelTimer() {
         self.connectedTimer?.cancel()
+    }
+
+    func resetPomodories() {
+        numberOfFinishedPomodories = 0
     }
 
 }
