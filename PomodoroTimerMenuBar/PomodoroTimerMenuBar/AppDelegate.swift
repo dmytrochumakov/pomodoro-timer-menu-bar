@@ -8,6 +8,7 @@
 import Foundation
 import AppKit
 import SwiftUI
+import LaunchAtLogin
 
 final class AppDelegate: NSObject, NSApplicationDelegate {
 
@@ -15,6 +16,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     private var popover: NSPopover!
 
     func applicationDidFinishLaunching(_ notification: Notification) {
+        if !LaunchAtLogin.isEnabled {
+            LaunchAtLogin.isEnabled = true
+        }
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
         if let statusButton = statusItem.button {
             statusButton.image = NSImage(systemSymbolName: "hammer.circle.fill",
