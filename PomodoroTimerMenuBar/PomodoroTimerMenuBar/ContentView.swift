@@ -17,7 +17,7 @@ enum TimerType: Equatable {
     var timeRemaining: Int {
         switch self {
         case .work:
-            1500
+            1800
         case let .relax(numberOfFinishedPomodories):
             if numberOfFinishedPomodories.isMultiple(of: 4) {
                 900
